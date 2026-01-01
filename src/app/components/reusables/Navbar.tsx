@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import Button from "./Button";
 
 import {
   HiOutlineBookOpen,
@@ -110,7 +111,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="w-full bg-[var(--background-accent)] text-[var(--text-color)] shadow-lg relative z-50">
+    <nav className="w-[95%] bg-(--background-accent) mx-auto rounded-b-2xl text-(--text-color) shadow-lg relative z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
 
@@ -137,8 +138,8 @@ export default function Navbar() {
                     href={link.href}
                     className={`px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-1 transition
                       ${isActive
-                        ? "bg-[var(--accent-color)] text-white shadow-lg"
-                        : "text-gray-300 hover:text-white hover:bg-[var(--bg-color)]"
+                        ? "bg-(--accent-color) text-white shadow-lg"
+                        : "text-gray-300 hover:text-white hover:bg-(--bg-color)"
                       }`}
                   >
                     {link.label}
@@ -150,16 +151,16 @@ export default function Navbar() {
                   {/* Dropdown */}
                   {link.submenu && (
                     <div className="absolute left-0 top-full w-72 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition">
-                      <div className="bg-[var(--bg-color)] rounded-xl shadow-2xl border border-[var(--background-accent)] overflow-hidden animate-dropdown">
+                      <div className="bg-(--bg-color) rounded-xl shadow-2xl border border-(--background-accent) overflow-hidden animate-dropdown">
                         {link.submenu.map((item) => (
                           <Link
                             key={item.href}
                             href={item.href}
                             prefetch={false}
-                            className="flex items-start gap-3 px-4 py-3 hover:bg-[var(--background-accent)] transition"
+                            className="flex items-start gap-3 px-4 py-3 hover:bg-(--background-accent) transition"
                           >
                             {/* Icon */}
-                            <div className="text-[var(--accent-color)] text-lg mt-0.5">
+                            <div className="text-(--accent-color) text-lg mt-0.5">
                               {item.icon}
                             </div>
 
@@ -186,15 +187,13 @@ export default function Navbar() {
 
           {/* CTA */}
           <div className="hidden md:block">
-            <button className="px-6 py-2.5 bg-[var(--accent-color)] text-white rounded-lg font-medium transition hover:shadow-lg hover:scale-105 active:scale-95">
-              Submit Snippet
-            </button>
+            <Button href="/" content="Submit Snippet" variant="primary" target="_self"></Button>
           </div>
 
           {/* Mobile toggle */}
           <button
             onClick={() => setMobileMenuOpen((v) => !v)}
-            className="md:hidden p-2 rounded-lg hover:bg-[var(--bg-color)]"
+            className="md:hidden p-2 rounded-lg hover:bg-(--bg-color)"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X /> : <Menu />}
@@ -226,7 +225,7 @@ export default function Navbar() {
                         onClick={() => setMobileMenuOpen(false)}
                         className="flex items-center gap-3 px-4 py-2 text-sm text-gray-400 hover:text-white"
                       >
-                        <span className="text-[var(--accent-color)]">
+                        <span className="text-(--accent-color)">
                           {item.icon}
                         </span>
                         {item.label}
